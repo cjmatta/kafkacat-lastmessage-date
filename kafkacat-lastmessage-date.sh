@@ -43,7 +43,7 @@ fi
 printf "\n%-40s %-10s %s\n" "topic" "partition" "last message date"
 echo "----------------------------------------------------------------------"
 for TOPIC in ${TOPICS}; do 
-    PARTITIONOUT=$(kafkacat -q -F ${KAFKACAT_CONFIG} -C -o -1 -e -t ${TOPIC} -f "%p,%T\n" | sort -n +0);
+    PARTITIONOUT=$(kafkacat -q -F ${CONFIGFILE} -C -o -1 -e -t ${TOPIC} -f "%p,%T\n" | sort -n +0);
     if [[ "x${PARTITIONOUT}" == "x" ]]; then
             printf "%-40s %s\n" "${TOPIC}" "empty topic"
     else
